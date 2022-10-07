@@ -1,0 +1,29 @@
+doctype html
+html(lang="en", style="width: 100%; height: 100%; overflow: hidden;")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Document
+        style.
+            #product-price {
+                font-family: #{query.fontFamily || "unset"};
+                color: #{query.color || "unset"};
+                font-size: #{query.fontSize && query.fontSize + "rem" || "unset"};
+                font-weight: #{query.fontWeight || "unset"};
+                -webkit-text-stroke-width: #{query.strokeWidth + "px" || "unset"};
+                -webkit-text-stroke-color: #{query.strokeColor || "unset"};
+            }
+
+            .price-container {
+                display: flex; 
+                justify-content: #{query.hAlign}; 
+                align-items: #{query.vAlign};
+                width: 100%; height: 100%; 
+                overflow: hidden;
+                transform: translateX(#{query.hOffset + "px"}) translateY(#{query.vOffset + "px"});
+                top: #{query.vOffset};
+            }
+    body(style="width: 100%; height: 100%; overflow: hidden;")
+      div.price-container
+        div#product-price= productPrice
